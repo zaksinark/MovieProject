@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    #scroll_me{
+        overflow: scroll;
+        height: 300px;
+        width: 85%;
+        max-width: 600px;
+        margin: 0 auto;
+        font: 100%/1.4 lora, serif;
+    }
+</style>
+<body class="bg-dark text-light">
+    <div class="d-flex justify-content-around">
+        <div class="w-25">
+            <div>
+                <div>
+                    <h1 class="m-4 p-1">Title: Tenacious D and the Pick of Destiny</h1>
+                    <h3 class="m-4 p-1">Director: Liam Lynch</h3>
+                    <h4 class="m-4 p-1">Genre: Comedy</h4>
+                </div>
+                <div>
+                    <p class="m-4 p-1 flex-*-wrap">Actors: Jack Black</p>
+                </div>
+            </div>
+            <div>
+                <p class="m-4 p-1 flex-*-wrap">Movie Discription: A comedy about 2 guys who go on a quest to find the pick of destiny</p>
+            </div>
+            <div>
+                <form class="form-group" action="/review" method="POST">
+                    <div>
+                        <label for="howmany" class="m-4 p-1">How many Stars:</label>
+                        <label for="1">1/5</label>
+                        <input type="radio" name="stars" value="1" class="m-2 p-1">
+                        <label for="2">2/5</label>
+                        <input type="radio" name="stars" value="2" class="m-2 p-1">
+                        <label for="3">3/5</label>
+                        <input type="radio" name="stars" value="3" class="m-2 p-1">
+                        <label for="4">4/5</label>
+                        <input type="radio" name="stars" value="4" class="m-2 p-1">
+                        <label for="5">5/5</label>
+                        <input type="radio" name="stars" value="5" class="m-2 p-1">
+                    </div>
+                    <div>
+                        <textarea name="comment" class="form-control m-4 p-1" placeholder="Write Review Here" cols="20" rows="3"></textarea>
+                        <input type="submit" class="m-4 p-1">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div>
+                <iframe class="m-4 p-2" height=550px width=850px
+                src=https://youtube.com/embed/2tvKDAW6Flk>
+                </iframe>
+            </div>
+            <div>
+                <div class="row" id="scroll_me">
+                    <div data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                        <div class="bg-dark justify-content-center text-light">
+                            <h6>Bob Bobbers
+                            
+                                <a href="/edit/movie/">Edit</a>
+                                <a href="/destroy/movie/">Delete</a>
+                            
+                            </h6>
+                            <h6 id="simple-list-item-1">5/5 Stars</h6>
+                            <p>Hilarious movie that will keep you laughing the whole way through!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/static.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    #scroll_me{
+        overflow: scroll;
+        width: 85%;
+        height: 800px;
+        max-width: 600px;
+        margin: 0 auto;
+        font: 100%/1.4 lora, serif;
+    }
+</style>
+<body class="bg-dark text-light">
+    <div class="d-flex justify-content-around">
+        <div class="m-4 p-1 w-25">
+            <a href="/logout">Logout</a>
+            <h1  class="m-4 p-1"> Search For Movies!</h1>
+            <form action="/search" method="post" class="bg-dark text-light rounded">
+                {% with messages = get_flashed_messages(category_filter=['search']) %}
+                    {% if messages %}
+                    <div role="alert">
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="title" class="m-4 p-1">Movie Title:</label>
+                    <input type="text" name="title" class="m-4 p-1 w-75 form-control" placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <label for="genre" class="m-4 p-1">Genre:</label>
+                    <select name="genre" class="m-4 p-1 w-25 form-control" placeholder="Genre">
+                        <option>Comedy</option>
+                        <option>Action</option>
+                        <option>Drama</option>
+                        <option>Thriller</option>
+                        <option>Horror</option>
+                    </select>
+                </div>
+                <input type="submit" value="search" class="m-4 p-1">
+            </form>
+        </div>
+        <div class="m-4 p-1 form-group w-75" id="scroll_me">
+            <form method="post">
+                <div class="row">
+                    <div class="col-12">
+                        <main id="main">
+                            <div class="d-flex flex-column text-center bg-dark text-light">
+                                <div class="bg-dark justify-content-center text-light">
+                                    <a class="m-4 p-1 rounded" href="/info">Tenacious D and the pick of Destiny</a>
+                                    <img src="tenaciousD.jpg" alt="coverart" class="m-4 p-1">
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="static/static.js"></script>
+</body>
+</body>
+</html>
