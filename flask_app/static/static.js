@@ -11,7 +11,7 @@
 //https://api.themoviedb.org/3/person/{person_id}?api_key=203336aef5e949156c0daf7b699052dd&language=en-US
 
 // Get by popular (generic search screen load in)
-// /discover/movie?sort_by=popularity.desc
+// "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc"api_key=203336aef5e949156c0daf7b699052dd"
 
 // Search by movie
 // https://api.themoviedb.org/3/search/movie?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&query=&page=1&include_adult=false
@@ -30,7 +30,7 @@
 const BASEURL = "https://api.themoviedb.org/3/";
 const APIKEY = "api_key=203336aef5e949156c0daf7b699052dd";
 const POP_URL = BASEURL+'/discover/movie?sort_by=popularity.desc&'+APIKEY;
-const IMG_URL = "https://image.tmdb.org/t/p/w500/"+APIKEY;
+const IMG_URL = "https://image.tmdb.org/t/p/w200/"+APIKEY;
 
 
 

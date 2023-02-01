@@ -40,11 +40,9 @@
                 <div class="form-group">
                     <label for="genre" class="m-4 p-1">Genre:</label>
                     <select name="genre" class="m-4 p-1 w-25 form-control" placeholder="Genre">
-                        <option>Comedy</option>
-                        <option>Action</option>
-                        <option>Drama</option>
-                        <option>Thriller</option>
-                        <option>Horror</option>
+                        {% for one_genre in genre %}
+                            <option>{{ genre.name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <input type="submit" value="search" class="m-4 p-1">
@@ -57,8 +55,14 @@
                         <main id="main">
                             <div class="d-flex flex-column text-center bg-dark text-light">
                                 <div class="bg-dark justify-content-center text-light">
-                                    <a class="m-4 p-1 rounded" href="/info">Tenacious D and the pick of Destiny</a>
-                                    <img src="tenaciousD.jpg" alt="coverart" class="m-4 p-1">
+                                    {% for one_movie in movie%}
+                                    <div>
+                                        <a class="m-4 p-1 rounded" href="/info">{{ movie.title }}</a>
+                                    </div>
+                                    <div>
+                                        <img src="https://image.tmdb.org/t/p/w200/{{ movie.poster_path }}" alt="coverart" class="m-4 p-1">
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </main>

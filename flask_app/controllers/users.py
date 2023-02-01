@@ -3,6 +3,7 @@ from flask_app import app
 from flask import jsonify, request
 from flask_app.models.user import User
 from flask_app.models.movie import Movie
+import requests
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -51,9 +52,16 @@ def search():
     data ={
         'id': session['user_id']
     }
-
     
-    return render_template("search.html",user=User.my_id(data))
+    genre = requests.get(f'https://api.themoviedb.org/3/genre/movie/list?api_key=203336aef5e949156c0daf7b699052dd&language=en-US')
+    genre_list = genre.json()
+    print("API RESULT ---------------------->", genre_list['genres'])
+
+    result = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&page=1')
+    movie_list =  result.json()
+    print("API RESULT ---------------------->", movie_list['results'][0])
+
+    return render_template("search.html",user=User.my_id(data), movie=movie_list['results'][0], genre=genre_list['genres'])
 
 @app.route('/logout')
 def logout():
