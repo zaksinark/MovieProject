@@ -2,7 +2,7 @@ from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask import jsonify, request
 from flask_app.models.user import User
-from flask_app.models.movie import Movie
+from flask_app.models.movie import Review
 import requests
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
