@@ -53,15 +53,18 @@ def search():
         'id': session['user_id']
     }
     
-    genre = requests.get(f'https://api.themoviedb.org/3/genre/movie/list?api_key=203336aef5e949156c0daf7b699052dd&language=en-US')
-    genre_list = genre.json()
-    print("API RESULT ---------------------->", genre_list['genres'])
+    if 'title' in session and len(session['title']) > 1:
+        MOVIE = session['title']
+        session.pop('title')
+        result = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&query={MOVIE}&page=1&include_adult=false')
+        movie_list =  result.json()
+
+        return render_template("search.html",user=User.my_id(data), movies=movie_list['results'])
 
     result = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&page=1')
     movie_list =  result.json()
-    print("API RESULT ---------------------->", movie_list['results'][0])
 
-    return render_template("search.html",user=User.my_id(data), movie=movie_list['results'][0], genre=genre_list['genres'])
+    return render_template("search.html",user=User.my_id(data), movies=movie_list['results'])
 
 @app.route('/logout')
 def logout():

@@ -23,16 +23,11 @@
         <div class="w-25">
             <div>
                 <div>
-                    <h1 class="m-4 p-1">Title: Tenacious D and the Pick of Destiny</h1>
-                    <h3 class="m-4 p-1">Director: Liam Lynch</h3>
-                    <h4 class="m-4 p-1">Genre: Comedy</h4>
-                </div>
-                <div>
-                    <p class="m-4 p-1 flex-*-wrap">Actors: Jack Black</p>
+                    <h1 class="m-4 p-1">Title:<br> {{ movie.title }}</h1>
                 </div>
             </div>
             <div>
-                <p class="m-4 p-1 flex-*-wrap">Movie Discription: A comedy about 2 guys who go on a quest to find the pick of destiny</p>
+                <p class="m-4 p-1 flex-*-wrap">Movie Discription:<br> {{ movie.overview }}</p>
             </div>
             <div>
                 <form class="form-group" action="/review" method="POST">
@@ -58,22 +53,23 @@
         </div>
         <div>
             <div>
-                <iframe class="m-4 p-2" height=550px width=850px
+                <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" class="m-4 p-2" alt="cover art">
+                <!-- <iframe class="m-4 p-2" height=550px width=850px
                 src=https://youtube.com/embed/2tvKDAW6Flk>
-                </iframe>
+                </iframe> -->
             </div>
             <div>
                 <div class="row" id="scroll_me">
                     <div data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
                         <div class="bg-dark justify-content-center text-light">
-                            <h6>{{user.review}}
+                            <h6>{{ user.name }}
                             
-                                <a href="/edit/movie/">Edit</a>
-                                <a href="/destroy/movie/">Delete</a>
+                                <a href="/edit/review/">Edit</a>
+                                <a href="/destroy/review/">Delete</a>
                             
                             </h6>
-                            <h6 id="simple-list-item-1">5/5 Stars</h6>
-                            <p>Hilarious movie that will keep you laughing the whole way through!</p>
+                            <h6 id="simple-list-item-1">{{ user.stars }}</h6>
+                            <p>{{ user.review }}</p>
                         </div>
                     </div>
                 </div>

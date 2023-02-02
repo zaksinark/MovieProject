@@ -23,7 +23,7 @@
         <div class="m-4 p-1 w-25">
             <a href="/logout">Logout</a>
             <h1  class="m-4 p-1"> Search For Movies!</h1>
-            <form action="/search" method="post" class="bg-dark text-light rounded">
+            <form action="/search/movie" method="POST" class="bg-dark text-light rounded">
                 {% with messages = get_flashed_messages(category_filter=['search']) %}
                     {% if messages %}
                     <div role="alert">
@@ -37,31 +37,20 @@
                     <label for="title" class="m-4 p-1">Movie Title:</label>
                     <input type="text" name="title" class="m-4 p-1 w-75 form-control" placeholder="Title">
                 </div>
-                <div class="form-group">
-                    <label for="genre" class="m-4 p-1">Genre:</label>
-                    <select name="genre" class="m-4 p-1 w-25 form-control" placeholder="Genre">
-                        {% for one_genre in genre %}
-                            <option>{{ genre.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <input type="submit" value="search" class="m-4 p-1">
+                <button class="btn btn-primary m-4 p-1">Search</button>
             </form>
         </div>
         <div class="m-4 p-1 form-group w-75" id="scroll_me">
-            <form method="post">
+            <form>
                 <div class="row">
                     <div class="col-12">
                         <main id="main">
                             <div class="d-flex flex-column text-center bg-dark text-light">
                                 <div class="bg-dark justify-content-center text-light">
-                                    {% for one_movie in movie%}
-                                    <div>
-                                        <a class="m-4 p-1 rounded" href="/info">{{ movie.title }}</a>
-                                    </div>
-                                    <div>
-                                        <img src="https://image.tmdb.org/t/p/w200/{{ movie.poster_path }}" alt="coverart" class="m-4 p-1">
-                                    </div>
+                                    {% for one_movie in movies %}
+                                    <a href="/info/{{ one_movie.title }}">{{ one_movie.title }}</a>
+                                    <img src="https://image.tmdb.org/t/p/w200{{one_movie.poster_path}}" alt="cover art">
+                                    <hr>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -71,7 +60,7 @@
             </form>
         </div>
     </div>
-    <script src="static/static.js"></script>
+    <script src="static.js"></script>
 </body>
 </body>
 </html>

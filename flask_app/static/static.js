@@ -1,3 +1,13 @@
+/* <div class="bg-dark justify-content-center text-light">
+                                    {% for one_movie in movies %}
+                                    <a href="/info">{{ one_movie.title }}</a>
+                                    <img src="https://image.tmdb.org/t/p/w200{{one_movie.poster_path}}" alt="cover art">
+                                    <hr>
+                                    {% endfor %}
+                                </div> */
+
+
+
 // Gets movies genre list
 // https://api.themoviedb.org/3/genre/movie/list?api_key=203336aef5e949156c0daf7b699052dd&language=en-US
 
@@ -14,7 +24,7 @@
 // "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc"api_key=203336aef5e949156c0daf7b699052dd"
 
 // Search by movie
-// https://api.themoviedb.org/3/search/movie?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&query=&page=1&include_adult=false
+// 'https://api.themoviedb.org/3/search/movie?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&query={MOVIE}&page=1&include_adult=false'
 
 // Search by person
 // https://api.themoviedb.org/3/search/person?${APIKEY}&language=en-US&query=&page=1&include_adult=false
@@ -34,7 +44,9 @@ const IMG_URL = "https://image.tmdb.org/t/p/w200/"+APIKEY;
 
 
 
-fetch(`https://api.themoviedb.org/3/search/movie?api_key=203336aef5e949156c0daf7b699052dd&language=en-US&query=Tenacious&page=1&include_adult=false`)
+
+
+fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=203336aef5e949156c0daf7b699052dd&language=en-US`)
     .then(response => response.json() )
     .then(coderData => console.log(coderData) )
     .catch(err => console.log(err))
